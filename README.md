@@ -1,2 +1,2 @@
 # my_example
-hi
+小例子
