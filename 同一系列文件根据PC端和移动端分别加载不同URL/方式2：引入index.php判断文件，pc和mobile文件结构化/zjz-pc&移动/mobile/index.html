@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title>终结者，创世纪</title>
+<link type="text/css" href="css/myvedio.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="http://static.qiyi.com/js/html5/js/lib/lib.1.0.0.min.js?sea1.2.min.js"></script>
+<script type="text/javascript">
+window.Qiyi = window.Qiyi || {};
+window.Q = window.Qiyi;
+(function(Q){
+Q.liburl = "http://static.qiyi.com/js/html5/js/lib/h5lib.removesea.1.0.1.js";
+Q.load = function(jobName, callback) {
+seajs.use(Q.liburl, function() {
+    url = jobName.indexOf("://")<0?"http://static.iqiyi.com/js/html5/" + jobName:jobName;
+    seajs.use(url, function(pagejob) {
+        if (pagejob && pagejob.addJobs) {
+            pagejob.addJobs();
+        }
+        if (pagejob && pagejob.start) {
+            pagejob.start();
+        }
+        if (callback) {
+            callback();
+        }
+    });
+});
+};
+Q.ready = function(callback) {
+seajs.use(Q.liburl, function() {
+    callback();
+});
+};
+Q.PageInfo = Q.PageInfo || {};
+})(window.Q);
+
+    Q.PageInfo = Q.PageInfo || {};
+</script>
+
+<script type="text/javascript">
+                            Q.PageInfo = Q.PageInfo || {};
+    Q.PageInfo.cname = "";
+    Q.PageInfo.page = "play";
+    Q.PageInfo.playInfo = {};
+	Q.PageInfo.playInfo.imageUrl = "http://img.m.duoku.com/cimages/img/19035/19035.jpg";	
+    Q.PageInfo.playInfo.sourceCode = "0";
+    Q.PageInfo.playInfo.exclusive = "0";
+     Q.PageInfo.playInfo.onlineStatus = "";
+    Q.PageInfo.playInfo.sid = "0";
+    Q.PageInfo.playInfo.shareCount = "";
+    Q.PageInfo.playInfo.qitanId = "0";
+    Q.PageInfo.playInfo.order = "0";
+    Q.PageInfo.playInfo.sourceName = "";
+    Q.PageInfo.playInfo.focus = "";
+    Q.PageInfo.playInfo.publicLevel = "0"*1;
+    Q.PageInfo.playInfo.tvid = "4441474209";
+    Q.PageInfo.playInfo.vid = "0618394df9b1f9965bf8b91da71866ce";
+    Q.PageInfo.playInfo.aid = "4441474209";
+    Q.PageInfo.playInfo.duration = "62";
+    Q.PageInfo.playInfo.cid = "7";
+    Q.PageInfo.playInfo.commentAllowed = "true";
+    Q.PageInfo.playInfo.purchaseType = "0";
+    Q.PageInfo.playInfo.bossStatus = "0";
+    Q.PageInfo.playInfo.period = "";
+    Q.PageInfo.playInfo.commentCount = "";
+    Q.PageInfo.playInfo.isUGC = true;
+    Q.PageInfo.playInfo.playCount = "";
+    Q.PageInfo.playInfo.season = "0";
+    Q.PageInfo.playInfo.shortTitle = "";
+    Q.PageInfo.playInfo.isLongVideo = false;
+    Q.PageInfo.playInfo.isSolo = false;
+    Q.PageInfo.playInfo.isEffect = true;
+    Q.PageInfo.playInfo.subType = "1";
+    Q.PageInfo.playInfo.userVideoCount = "1";
+    Q.PageInfo.playInfo.followerCount = "0";
+    Q.PageInfo.playInfo.albumName = "";
+    Q.template_code = "0";
+    Q.PageInfo.playInfo.tags = "";
+
+    var ua = navigator.userAgent;
+     Q.PageInfo.playInfo.videoFormat = function() {
+    if (Zepto.os.ios) {
+        return "m3u8";
+    } else if (/mqqbrowser/.test(ua) && (!(/mqqbrowser\/([0-4]|5\.[01])/.test(ua))) && /android [^0-3]/.test(ua)) {
+        // android4以上版本并且QQ5.2及以上版本用m3u8
+        return "m3u8";
+    } else {
+        return "mp4";
+    }}();
+</script>
+<script id="style" type="text/template">
+*{
+	font-family: sans-serif;
+	font-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body,html,p,h1,h2,h3,ul,li{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background: #0d0d0d;
+	color: #fff;
+}
+/*------------------  header  -----------------*/
+#banner{
+	background-image:<@19031.jpg>;
+	height:344vx;
+}
+header h1{
+	background-image:<@19032.jpg>;
+	height:445vx;
+}
+/*------------------  content  -----------------*/
+.content{
+	position:relative;
+	width:540vx;
+	margin:0 auto;
+}
+.video-player{
+	height:306vx;
+	background-size:cover;
+}
+.video-player img#shadeF{
+	height:306vx;
+	background-size:cover;
+	position:absolute;
+	top:0;
+}
+video{
+	object-fit:contain;
+}
+.content p{
+	font-size: 14vx;
+	margin:25vx  50vx 0 50vx;
+	line-height: 26vx;
+}
+.copyright{
+	height:140vx;
+	width:432vx;
+	margin:0 auto;
+	background: url(http://img.m.duoku.com/cimages/img/19034/19034.png) no-repeat 0 0;
+	background-size: cover;
+	margin-top:130vx;
+}
+.content h2{
+	font-size: 30vx;
+	text-align: center;
+	margin-top:40vx;
+	margin-bottom:20vx;
+}
+/*------------------  footer  -----------------*/
+footer{
+	background: url(http://img.m.duoku.com/cimages/img/19033/19033.png) no-repeat 0 0;
+	height:85vx;
+	background-size: cover;
+	margin-bottom:85vx;
+}
+.ul1{
+	width:438vx;
+	height:85vx;
+	margin:0 100vx 0 100vx;
+}
+.ul1 li{
+	width:140vx;
+	height:40vx;	
+}
+.ul1 li a{
+	display:block;
+	width:140vx;
+	height:40vx;
+	font-size:12vx;
+}
+</script>
+<style></style>
+
+<script>
+$(window).on("resize orientationchange", function(){
+	var vw = innerWidth;
+	if(window._vw == vw) return;
+	$("style").text(function(temp){
+		return temp.replace(/<(.)(.*?)>/g, function(str, c, exp){
+			switch(c){
+				case '=':
+					return eval(exp);
+				case '@':
+					return 'url(http://img.m.duoku.com/cimages/img/' + exp.match(/\d+/) + '/' + exp + ')';
+			}
+		}).replace(/\b(\d+)vx\b/g, function(str, val){
+			return vw / 640 * val + "px";
+		}).replace(
+			/(?:appearance|background-size|border-radius|border-image|box(-\w+)+|transform|transition(-\w+)*):[^};]+/g,
+			"-webkit-$&;-moz-$&;$&"
+		);
+	}($("#style").text()));
+	window._vw = vw;
+	setTimeout(function(){
+		$(window).trigger("resize");
+	}, 1000)
+}).trigger("resize");
+</script>
+</head>
+<body>
+	<header>
+		<div id="banner"></div>
+		<h1></h1>
+	</header>
+	<div class="content">
+		<div class="video-player" id="video-player"> 
+
+			<section class="h5_wrap">
+	            <div data-component="page.play.component.vipTip.VipTip">
+	                <div data-node="tip" class="mod-vipTip" data-widget-tip="vip" style="display:none"></div>
+	                <div data-node="con" id="vipcon" class="mod-video_wrap" style="display:none"></div>
+	            </div>
+	            <!-- 频道播放页 开始 -->
+	            <div class="mod-video_wrap" id="player-container" data-player-widget="container">
+	                <!--div id="player-container" class="mod-player" data-player-widget="container"-->
+	                <div id="videoCon" class="mod-player_inner" data-widget-container="video">
+	                   
+	                    <div class="mod-video" data-widget-player="videoinner">
+	                        <!--preload none 修复 小米2s+微信webview 不播放bug -->
+	                        <video preload="none" class="mod-video_player" style="height: 100%;display:none;" id="video"></video>
+	                        <div id="player-poster" class="mod-video_poster" data-player-widget="poster" style="display:none;">
+	                            <img id="shadeF" data-player-widget="posterimg" style="height:auto;" src="http://img.m.duoku.com/cimages/img/19035/19035.jpg"/>
+	                        </div>
+	                        <div id="player-dashboard" class="mod-video_dashboard" data-player-widget="dashboard" style="display:none;">
+	                            <div class="video_console">
+	                                <div class="video_progress" data-player-widget="progressBar">
+	                                    <div class="progress_trackWrap">
+	                                        <div class="progress_track" style="right:18px">
+	                                            <div class="progress_load" style="width: 0px;" data-player-widget="progressloaded"></div>
+	                                            <div class="progress_play" style="width: 0px; " data-player-widget="progress"></div>
+	                                            <div class="progress_seek" style="" data-player-widget="progressFocus" style="margin-left:-20px;"></div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="video_controls" >
+	                                    <div class="timeDisplay">
+	                                        <span class="timeDisplay_current" data-player-widget="time">00:00</span>
+	                                        <span class="timeDisplay_splite">/</span>
+	                                        <span class="timeDisplay_duration" data-player-widget="totaltime">00:00</span>
+	                                    </div>
+	                                    <div class="fullScreen" data-player-widget="fullscreen" style="visibility:hidden;">
+	                                        <i class="ff-icon ff-fullScreen"></i>
+	                                    </div>
+	                                 </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+           		</div>  
+        	</section>
+			
+	    </div>
+		<p>《终结者：创世纪》是经典科幻大片《终结者》的重启之作，在保留原有影片人物的同时，故事也追溯到莎拉·康纳的幼年时期，阿诺饰演的终结者T-800成为了她的“养父”。未来人类领袖约翰·康纳派部下凯尔·里斯“穿越”回到过去保护自己的母亲，凯尔却首先遭遇了液态金属终结者T-1000的追杀，被莎拉救下后，凯尔发现眼前的世界与预计中完全不同，一场关乎人类未来的“人机”大战正式上演……</p>
+		<div class="copyright"></div>
+		<h2>官方正版手游即将上线 敬请期待</h2>
+	</div>
+	<footer>
+		<ul class="ul1">
+			<li><a href="http://mgame.baidu.com/featured_games/brands_mobile/" target="_blank;"></a></li>
+		</ul>
+	</footer>
+
+<script>
+    Q.load('http://img.m.duoku.com/cimages/img/h5/3rd_party/miniplayer.min.js', function() {
+        return Q.video.loadVideoInfo({
+            aid : Q.PageInfo.playInfo.aid,
+            tvid : Q.PageInfo.playInfo.tvid,
+            vid : Q.PageInfo.playInfo.vid,
+            vfrm : Zepto.url.getQueryValue(location.href, 'vfrm'),
+            publicLevel : Q.PageInfo.playInfo.publicLevel,
+            isUGC : Q.PageInfo.playInfo.isUGC,
+            duration : Q.PageInfo.playInfo.duration,
+            ADPlayerID : Q.PageInfo.playInfo.ADPlayerID,
+            rate : Zepto.cookie.get('play_stream') || 1
+        }, {
+             success: function(a) {
+                $("#shadeF").click(function(){
+                	Q.video.videoUrlReady(a, function(){});
+                })
+            }
+        });
+    })
+</script>
+
+</body>
+</html>
