@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建第一个 Vue 应用</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+.animate-p {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+</style>
+</head>
+<body>
+    <div id="app">    
+        <button @click="showme = !showme">toggle</button>
+        <transition
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:leave="leave"
+            v-bind:css="false"
+          >
+            <p v-if="showme" class="animate-p">
+              Demo
+            </p>
+        </transition>
+    </div>
+
+<script>
+new Vue({
+    el:'#app',
+    data: {
+        showme: true,
+        message:'Hello World!'
+    },
+    methods: {
+        beforeEnter(el){
+            $(el).css({
+                left: '-500px',
+                opacity: 0
+            })
+        },
+        enter(el,done){
+            $(el).animate({
+                left: 0,
+                opacity: 1
+            },{
+                duration: 1500,
+                complete: done
+            })
+        },
+        leave(el,done){
+            $(el).animate({
+                left: '500px',
+                opacity: 0
+            },{
+                duration: 1500,
+                complete: done
+            })
+        }
+    }
+});
+</script>
+</body>
+</html>

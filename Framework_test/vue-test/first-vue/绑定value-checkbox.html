@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+</head>
+<body> 
+<div id="app">
+    <input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+    <!-- <input type="button" v-on:click="getToggle()" value="get"> -->
+</div>
+<script>
+var vm = new Vue({
+    el: "#app",
+    // data: {
+    //     a: true,
+    //     b: false
+    // },
+    methods: {
+        getToggle:function(){
+            alert(vm.toggle===vm.a);
+            alert(vm.toggle===vm.b);
+        }
+    }
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建第一个 Vue 应用</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
+<style>
+#app {
+    margin: 40px 100px;
+    height:200px;
+    border:1px solid green;
+}
+.fade-enter-active {
+  transition: all 2.5s
+}
+.fade-enter{
+  transform: translateX(200px);
+  opacity: 0
+}
+.fade-leave-active {
+    transition: all 1.5s
+}
+.fade-leave-to {
+    opacity: 0;
+    transform: translateX(-200px)
+}
+</style>
+</head>
+<body>
+    <div id="app">    
+        <button @click="showme = !showme">toggle</button>
+        <transition name="fade">
+            <p v-if="showme">
+                {{ message }}
+            </p>
+        </transition>
+    </div>
+
+<script>
+new Vue({
+    el:'#app',
+    data: {
+        showme: true,
+        message:'Hello World!'
+    }
+});
+</script>
+</body>
+</html>

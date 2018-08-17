@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建第一个 Vue 应用</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.3/vue-resource.min.js"></script>
+    <link rel="stylesheet" href="css/address.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+
+            <div class="check-step">
+                <ul>
+                    <li class="cur">地址确认</li>
+                    <li>查看订单</li>
+                    <li>支付</li>
+                    <li>订单确认</li>
+                </ul>
+            </div>
+            <div class="checkout-title">
+                <h1>配送地址</h1>
+            </div>
+        	<div class="addr-list--wrap">
+                <div class="addr-list">
+                    <ul>
+                        <li v-for="(item,index) in filterAddress" :class="{'checkme': index == currentIndex }" @click="currentIndex = index">
+                            <dl>
+                                <dt>{{item.userName}}</dt>
+                                <dd class="address">{{item.streetName}}</dd>
+                                <dd class="tel">{{item.postCode}}</dd>
+                            </dl>
+                            <div class="addr-opration addr-edit">
+                                <a href="javascript:;" class="addr-edit-btn">编辑</a>
+                            </div>
+                            <div class="addr-opration addr-del">
+                                <a href="javascript:;" class="addr-del-btn">删除</a>
+                            </div>
+                            <div class="addr-opration addr-set-default" v-if="!item.isDefault">
+                                <a href="javascript:;" class="addr-set-default-btn" @click="setDefault(item.addressId)">设为默认</a>
+                            </div>
+                             <div class="addr-opration addr-default" v-if="item.isDefault">默认地址</div>
+                        </li>
+                        <li>
+                            <div class="add-new-inner">
+                                <i class="icon-add"></i>
+                                <p>添加新地址</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>  
+                <div class="shipping-addr-more">
+                    <a href="javascript:;" class="addr-more-btn" @click="loadMore">more</a>
+                </div> 
+            </div>
+            <div class="checkout-title">
+                <h1>配送方式</h1>
+            </div>
+            <div class="shipping-method-wrap">
+                <div class="shipping-method">
+                    <ul>
+                        <li :class="{'checkme': shippingMethod == 1 }" @click="shippingMethod = 1">
+                            <div class="name">标准配送</div>
+                            <div class="price">free</div>
+                        </li>
+                        <li :class="{'checkme': shippingMethod == 2 }" @click="shippingMethod = 2">
+                            <div class="name">高端配送</div>
+                            <div class="price">180</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+       
+        
+    </div>
+<script src="js/address.js"></script>
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

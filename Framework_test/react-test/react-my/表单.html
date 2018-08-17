@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+	<script src="http://static.runoob.com/assets/react/browser.min.js"></script>
+</head>
+<body>
+	  <div id="example"></div>
+
+    <script type="text/babel">
+      var HelloMessage = React.createClass({
+        getInitialState: function() {
+          return {value: 'Hello world'}
+        },
+        handleChange: function(event) {
+          this.setState({value: event.target.value});
+        },
+        render: function() {
+          var value = this.state.value;
+          return (
+          <div>
+            <input type="text" value={value} onChange={this.handleChange} />
+            <h4>{value}</h4>
+          </div>
+          )
+        }
+      });
+      
+      ReactDOM.render(
+        <HelloMessage />,
+        document.getElementById('example')
+      );
+    </script>
+</body>
+</html>

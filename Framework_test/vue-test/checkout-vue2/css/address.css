@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+	list-style-type: none;
+}
+
+.addr-list li{
+	width: 300px;
+	height: 160px;
+	float: left;
+	margin: 20px;
+	border:1px green solid;
+}
+.checkme {
+	background: #6f0
+}
+.addr-list li a.addr-set-default-btn {
+	display:none;
+}
+.addr-list li:hover a.addr-set-default-btn {
+	display: block;
+}
+.addr-list--wrap {
+	overflow: hidden;
+	width: 1200px;
+}
+.shipping-method {
+	width: 1000px;
+}
+.shipping-method li {
+	width: 200px;
+	display: inline-block;
+	border:1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方法与事件处理器</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+           <button v-on:click="greet">greet</button>
+        
+    </div>
+
+<script>
+var vm = new Vue({
+    el:'#app',
+    data: {
+        name: 'vue.js'
+    },
+    methods: {
+    	greet: function(event){
+    		alert('Hello ' + this.name + '!');
+    		alert(event.target.tagName)
+    	}
+    }
+});
+//vm.greet();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
