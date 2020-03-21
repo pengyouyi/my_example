@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+	<div>
+	    <canvas></canvas>
+	</div>
+    
+<script>  
+
+var img = new Image();
+img.src="p_0.jpg";
+
+
+img.onload = function() {
+
+var w = img.width;
+var h = img.height;
+
+var canvas = document.querySelector('canvas');
+
+var offsetX = canvas.offsetLeft,
+    offsetY = canvas.offsetTop;
+
+var mousedown = false;
+
+var ctx = canvas.getContext('2d');
+
+canvas.width = w;
+canvas.height = h;
+canvas.style.backgroundImage = 'url('+ img.src + ')';
+
+ctx.fillStyle = 'gray';
+ctx.fillRect(0, 0, w, h);
+
+ctx.globalCompositeOperation = 'destination-out';
+
+
+function eventDown(e){
+    e.preventDefault();
+    mousedown = true;
+}
+
+function eventUp(e){
+    e.preventDefault();
+    mousedown = false;
+}
+
+function eventMove(e){
+    e.preventDefault();
+    if(mousedown) {
+
+         // console.log('e.changedTouches',e.changedTouches)
+
+         // e.changedTouches: 涉及当前(引发)事件的触摸点的列表, 
+         // 只有移动端的touch事件有这个属性，pc端没有changedTouches
+  
+         if(e.changedTouches){
+             e = e.changedTouches[0];
+         }
+
+         var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+             y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+         with(ctx) {
+             beginPath() 
+             arc(x, y, 20, 0, Math.PI * 2);
+             fill();
+         }
+    }
+}
+
+
+
+canvas.addEventListener('touchstart', eventDown);
+canvas.addEventListener('touchend', eventUp);
+canvas.addEventListener('touchmove', eventMove);
+canvas.addEventListener('mousedown', eventDown);
+canvas.addEventListener('mouseup', eventUp);
+canvas.addEventListener('mousemove', eventMove);
+
+}
+
+</script>
+</body>
+</html>
+

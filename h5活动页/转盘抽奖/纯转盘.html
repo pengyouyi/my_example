@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title>test</title>
+<script type="text/javascript" src="http://img.m.duoku.com/cimages/img/h5/zepto.zea.min.js"></script>
+<!-- 实现自适应脚本 -->
+<script type="text/javascript" src="js/rem.js"></script>
+<style>
+*{
+	background-size: 100% 100%;
+}
+body,html,p,ul,ol,li,h1,h2,h3{
+	padding: 0;
+	margin: 0;
+}
+#wrap{
+        margin: 4rem auto;
+}
+.draw{
+	width: 16rem;
+	margin: auto;
+	height: 16rem;
+	overflow: hidden;
+	position: relative;
+}
+.wheel,.pointer{
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.wheel{
+	background-image: url(http://img.m.duoku.com/cimages/img/18522/18522.png);
+}
+.pointer{
+	background-image: url(http://img.m.duoku.com/cimages/img/18488/18488.png);
+}
+.btn_draw{
+	width: 6rem;
+	height: 6rem;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+}
+.rotating{
+	transition-property: -webkit-transform,transform;
+	transition-duration: 5s;
+}
+.alt{
+	-webkit-backface-visibility: hidden;
+}      
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div class="draw">
+	  <div class="wheel"></div>  <!--转盘-->
+	  <div class="pointer">   <!--点击区-->
+	  	<div class="btn_draw"></div> <!--指针-->
+	 </div>
+</div>
+</div>
+
+<script>
+/**转动动画函数**/
+var rotate = function(){
+		$.fn.rotate = function(turns){
+			return this.css({
+				transform: turns = "rotate(" + turns + "turn)",
+				"-webkit-transform": turns
+			});
+		};
+		var rotating = false, _turns = 0, fin,
+			wheel = $(".wheel").on("webkitTransitionEnd transitionend", function(){
+				wheel.removeClass("rotating").rotate(_turns %= 1);
+				$(".pointer").removeClass("alt");
+				fin && fin();
+			});
+		return function(turns, callback){
+			fin = callback;
+			$(".pointer").addClass("alt");
+			wheel.addClass("rotating").rotate(_turns = turns);
+		}
+	}();
+function isAnimating(){
+	return $(".pointer").hasClass("alt");
+}
+/**点击抽奖action**/
+$(".btn_draw").click(function(){
+	if(isAnimating()) return;
+	rotate(10 + Math.random(), function(){
+		alert('恭喜您中奖');
+	});
+});
+</script>
+</body>
+</html>

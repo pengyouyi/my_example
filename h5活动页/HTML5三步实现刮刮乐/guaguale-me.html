@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    
+    <title>guaguale</title>
+</head>
+
+<body>
+
+<div id="main">
+
+    <div class="msg">
+        gua gua kan:
+        <a href="javascript:void(0);" onclick="location.reload()">
+            click agin
+        </a>
+    </div>
+    
+    <div>
+        <canvas></canvas>
+    </div>
+    
+</div>
+<script type="text/javascript">
+
+//代码注释:首先，我们要禁用页面的鼠标选中拖动的事件，就是不运行执行选中操作。
+var bodyStyle = document.body.style; 
+bodyStyle.mozUserSelect = 'none'; 
+bodyStyle.webkitUserSelect = 'none'; 
+
+//代码注释:接着我们定义图片类，获取canvas元素，并设置背景和位置属性。
+var img = new Image();
+var canvas = document.querySelector('canvas');
+
+//代码注释:我们在本例中用到两张随机照片，每次刷新随机一张图片作为背景。
+var imgs = ['p_0.jpg','p_1.jpg'];
+var num = Math.floor(Math.random()*2);
+img.src = imgs[num];
+
+//然后进入主体，当检测到图片加载完的时候，首先定义一些属性和函数，函数layer()用来绘制一个灰色的正方形，eventDown()定义了按下事件, eventUp()定义了松开事件，eventMove()定义了移动事件，其中当按下时，获取坐标位移，并通过arc(x, y, 10, 0, Math.PI * 2)来绘制小圆点。
+img.addEventListener('load', function(e) {
+    var ctx;
+    var w = img.width,
+        h = img.height;
+    var offsetX = canvas.offsetLeft,
+        offsetY = canvas.offsetTop;
+    var mousedown = false;
+
+    
+    // canvas 背景设为图片
+    canvas.style.backgroundImage = 'url('+img.src+')';
+    canvas.width = w;
+    canvas.height = h;
+
+    ctx = canvas.getContext('2d');
+    //第1次绘制灰色矩形。
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(0, 0, w, h); 
+    // 设置2次绘制canvas，原有内容中与新图形不重叠的部分会被保留
+    ctx.globalCompositeOperation = 'destination-out';
+
+
+    function eventDown(e){
+        e.preventDefault();
+        mousedown = true;
+    }
+
+    function eventUp(e){
+        e.preventDefault();
+        mousedown = false;
+    }
+
+    function eventMove(e){
+        e.preventDefault();
+        if(mousedown) {
+             // e.changedTouches: 涉及当前(引发)事件的触摸点的列表, 
+             // 只有移动端的touch事件有这个属性，pc端没有changedTouches
+             if(e.changedTouches){
+                 e = e.changedTouches[e.changedTouches.length-1];
+             }
+             var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+                 y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+             with(ctx) {
+                 beginPath()
+                 //绘制圆点，x,y坐标为圆心，10为半径。
+                 arc(x, y, 10, 0, Math.PI * 2);
+                 fill();
+             }
+        }
+    }
+
+
+
+    canvas.addEventListener('touchstart', eventDown);
+    canvas.addEventListener('touchend', eventUp);
+    canvas.addEventListener('touchmove', eventMove);
+    canvas.addEventListener('mousedown', eventDown);
+    canvas.addEventListener('mouseup', eventUp);
+    canvas.addEventListener('mousemove', eventMove);
+});
+</script>
+  
+</body>
+</html>
