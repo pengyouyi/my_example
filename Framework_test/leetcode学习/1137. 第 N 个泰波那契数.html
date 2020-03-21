@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var tribonacci = function(n) {
+    let res = [0,1,1]
+    for (let i = 3; i <= n; i++) {
+        res[i] = res[i-1] + res[i-2] + res[i-3]
+    }
+    return res[n]
+};
+var n = 25
+console.log(tribonacci(n));
+</script>
+</body>
+</html>
+

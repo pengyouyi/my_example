@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function(haystack, needle) {
+    return haystack.indexOf(needle)
+};
+var haystack = "hello";
+var needle = "ll";
+console.log(strStr(haystack, needle))
+
+
+var strStr2 = function(haystack, needle) {
+    var len = haystack.length;
+    var needleLen = needle.length;
+    if (needle === '') {
+        return 0;
+    }
+    for (var i = 0; i < len; i++) {
+        if (haystack[i] === needle[0]) {
+            if (haystack.substr(i,needleLen) === needle) {
+                return i;
+            }
+        }
+    }
+    return -1;
+};
+console.log(strStr2(haystack, needle))
+</script>
+</body>
+</html>
+

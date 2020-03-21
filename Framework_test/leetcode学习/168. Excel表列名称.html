@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} n
+ * @return {string}
+ */
+var convertToTitle = function(n) {
+    const map = 'ZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let result = '';
+    while(n) {
+        let remainder = n % 26; // 余数
+        result = map[remainder] + result;
+        n = (n - (remainder === 0 ? 26 : remainder)) / 26; 
+        //n = n % 26 === 0 ? Math.floor(n / 26) - 1 : Math.floor(n / 26)
+    }
+    return result;
+};
+var n = 1048;
+console.log(convertToTitle(n))
+
+
+var convertToTitle2 = function(n) {
+    const map = ['Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y']
+    let count = n
+    let ans = ""
+    while (count) {
+        ans = map[count % 26] + ans
+        count = count % 26 === 0 ? Math.floor(count / 26) - 1 : Math.floor(count / 26)
+    }
+    return ans
+};
+//console.log(convertToTitle2(n))
+</script>
+</body>
+</html>
+

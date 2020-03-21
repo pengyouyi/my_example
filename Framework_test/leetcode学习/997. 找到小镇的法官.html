@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} N
+ * @param {number[][]} trust
+ * @return {number}
+ */
+var findJudge = function(N, trust) {
+	if (N == 1 && trust.length == 0) {
+        return 1
+    }
+    // 相信法官的人
+    let peoples = new Set();
+    // 可能为法官的人
+    let judges = new Set();
+    trust.forEach((item) => {
+    	judges.add(item[1])
+    })
+    trust.forEach((item) => {
+    	if (judges.has(item[0])) {
+    		judges.delete(item[0])
+    	}
+    })
+    let judge = [...judges][0]
+    if (judges.size == 1) {
+        trust.forEach((item) => {
+            if (item[1] === judge) {
+                peoples.add(item[0])
+            }
+        })
+    }
+    if (peoples.size == N - 1 && !peoples.has(judge)) {
+    	return judge
+    }
+    return -1
+};
+var N = 4, trust = [[1,3],[1,4],[2,3],[2,4],[4,3]]
+//var N = 3, trust = [[1,2],[2,3]]
+console.log(findJudge(N, trust));
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} bills
+ * @return {boolean}
+ */
+var lemonadeChange = function(bills) {
+    let count5 = 0;
+    let count10 = 0;
+    for (let i = 0; i < bills.length; i++) {
+        if (bills[i] === 5) {
+            count5++
+        } else if (bills[i] === 10) {
+            if (count5 > 0) {
+                count5--;
+            } else {
+                return false
+            }
+            count10++;
+        } else {
+            if (count10 > 0) {
+                count10--
+                count5--
+            } else {
+                count5 -= 3
+            }
+        }
+        if (count5 < 0) {
+            return false
+        }
+    }
+    return true;
+};
+var bills = [5,5,5,10,20];
+console.log(lemonadeChange(bills));
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[][]} A
+ * @return {number[][]}
+ */
+var transpose = function(A) {
+    let arr = []
+    for (let j = 0; j < A[0].length; j++) {
+        let temp = [];
+        for (let i = 0; i < A.length; i++) {
+            temp.push(A[i][j])
+        }
+        arr.push(temp)
+    }
+    return arr
+};
+var A = [[1,2,3],[4,5,6],[7,8,9]];
+console.log(transpose(A));
+
+</script>
+</body>
+</html>
+

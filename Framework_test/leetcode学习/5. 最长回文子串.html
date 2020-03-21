@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+    // 判断是否是回文串
+    var isPalindrome = function(str) {
+        return str.split('').reverse().join('') == str
+    }
+    if (s == '') return ''
+    let map = new Map()
+    for(let i = 0; i < s.length; i++) {
+        for (let j = i+1; j <= s.length; j++) {
+            let ss = s.slice(i,j)
+            if (isPalindrome(ss)) {
+                map.set(ss, ss.length)
+            }
+        }
+    }
+    let maxNum = Math.max.apply(Math, [...map.values()])
+    for (let [key,val] of map) {
+        if (val == maxNum) {
+            return key
+        }
+    }
+};
+var s = "cbbd"
+console.log(s);
+//console.log(longestPalindrome(s));
+
+var longestPalindrome2 = function(s) {
+    if (s == '') return ''
+    let start = 0;
+    let end = 0;
+
+    var expandAroundCenter = function(s, left,right) {
+        let L = left;
+        let R = right;
+        while(s[L] && s[R] && s[L] == s[R]) {
+            L--
+            R++
+        }
+        return R - L - 1
+    }
+    for (let i = 0; i < s.length; i++) {
+        let len1 = expandAroundCenter(s,i,i)
+        let len2 = expandAroundCenter(s,i,i+1)
+        let len = Math.max(len1, len2)
+        if (len > end - start) {
+            start = i - parseInt((len-1) / 2)
+            end = i + parseInt(len / 2)
+        }
+    }
+    return s.substring(start,end+1)
+};
+//console.log(longestPalindrome2(s));
+
+
+var longestPalindrome3 = function(s) {
+    if (s == '') return ''
+    let map = new Map()
+    // 中心扩展
+    var expandAroundCenter = function(s, left,right) {
+        let L = left;
+        let R = right;
+        while(s[L] && s[R] && s[L] == s[R]) {
+            L--
+            R++
+        }
+        return [L,R]
+    }
+    for (let i = 0; i < s.length; i++) {
+        let [L1, R1] = expandAroundCenter(s,i,i)
+        let [L2, R2] = expandAroundCenter(s,i,i+1)
+        // console.log(i, s.substring(L1+1, R1))
+        // console.log(i, s.substring(L2+1, R2))
+        let len1 = R1 - (L1 + 1)
+        let len2 = R2 - (L2 + 1)
+        if (len1 > len2) {
+            map.set(s.substring(L1+1, R1), len1)
+        } else {
+            map.set(s.substring(L2+1, R2), len2)
+        }
+    }
+    let maxNum = Math.max.apply(Math, [...map.values()])
+    for (let [key,val] of map) {
+        if (val == maxNum) {
+            return key
+        }
+    }
+
+};
+console.log(longestPalindrome3(s));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string[]} list1
+ * @param {string[]} list2
+ * @return {string[]}
+ */
+var findRestaurant = function(list1, list2) {
+    let map = new Map();
+    let res = [];
+    list1.forEach((item) => {
+    	if (list2.indexOf(item) !== -1) {
+            map.set(item, list1.indexOf(item) + list2.indexOf(item))
+    	}
+    });
+    // 最小索引和
+    let min = Math.min.apply(Math, [...map.values()])
+    for (let [key, val] of map) {
+        if (val === min) {
+        	res.push(key)
+        }
+    }
+    return res
+};
+var list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
+var list2 = ["KFC", "Shogun", "Burger King"];
+console.log(findRestaurant(list1, list2));
+</script>
+</body>
+</html>
+

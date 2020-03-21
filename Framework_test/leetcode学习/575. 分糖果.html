@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} candies
+ * @return {number}
+ */
+var distributeCandies = function(candies) {
+    const size = new Set(candies).size
+    if(size >= candies.length / 2) {
+        return candies.length / 2
+    } else {
+        return size
+    }
+    // return Math.min([...new Set(candies)].length, candies.length/2)
+};
+var candies = [1,1,2,2,3,3];
+console.log(distributeCandies(candies));
+</script>
+</body>
+</html>
+

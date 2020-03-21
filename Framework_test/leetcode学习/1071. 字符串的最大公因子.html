@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} str1
+ * @param {string} str2
+ * @return {string}
+ */
+function getLongShort(a, b) { 
+    // 字符串排序函数，返回的数组中，长的在前，短的在后
+    return [a, b].sort((a, b) => b.length - a.length);
+}
+
+var gcdOfStrings2 = function (str1, str2) {
+    let [long, short] = getLongShort(str1, str2);
+    while (short !== long) {
+        if (!long.includes(short)) {
+            return '';
+        }
+        let temp = long.replace(short, '');
+        [long, short] = getLongShort(short, temp);
+    }
+    return short;
+};
+var str1 = "AB", str2 = "ABAB"
+console.log(gcdOfStrings2(str1, str2));
+
+
+var gcdOfStrings = function (str1, str2) {
+    let len1 = str1.length;
+    let len2 = str2.length;
+    if (len1 == len2) {
+        if (str1 == str2) {
+            return str1
+        } else {
+            return ''
+        }
+    } else if (len1 > len2) {
+        let temp = str1.replace(str2, '');
+        return gcdOfStrings(temp, str2)
+    } else {
+        let temp = str2.replace(str1, '');
+        return gcdOfStrings(temp, str1)
+    }
+};
+console.log(gcdOfStrings(str1, str2));
+</script>
+</body>
+</html>
+

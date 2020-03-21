@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} A
+ * @return {string}
+ */
+var largestTimeFromDigits = function(A) {
+    let max = -1;
+    for(let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (j != i) {
+                for (k = 0; k < 4; k++) {
+                    if ( k!= j && k != i) {
+                        // 三个数位置确定了，最后一个数一定是6-i-j-k
+                        let l = 6 - i - j - k;
+                        let hours = 10 * A[i] + A[j]
+                        let mins = 10 * A[k] + A[l]
+                        if (hours < 24 && mins < 60) {
+                            max = Math.max(max, hours * 60 + mins)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if (max >= 0) {
+        let hours = parseInt(max/60) > 9 ? parseInt(max/60) : '0' + parseInt(max/60)
+        let mins = parseInt(max%60) > 9 ? parseInt(max%60) : '0' + parseInt(max%60)
+        return hours + ':' + mins
+    } else {
+        return ''
+    }
+};
+var A = [1,2,3,4];
+console.log(largestTimeFromDigits(A));
+</script>
+</body>
+</html>
+

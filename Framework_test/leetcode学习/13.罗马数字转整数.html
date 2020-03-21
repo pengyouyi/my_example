@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @return {number}
+ */
+
+ /*法一：此方法似乎不太正确，舍去*/
+var romanToInt = function(s) {
+    var roman = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
+    var special = ['IV', 'IX', 'XL', 'XC', 'CD', 'CM'];
+    var specialLen = special.length;
+
+    var specialArr = [];
+    var romanArr = [];
+
+    for( let i = 0; i < specialLen; i++) {
+
+        var specialIndex = s.indexOf(special[i]);
+
+        if (specialIndex > -1) {
+            specialArr.push(s.substr(specialIndex, 2));
+            s = s.replace(special[i], '')
+        }    
+    }
+
+    romanArr = s.split('');
+    var sToArr = specialArr.concat(romanArr);
+    var sToArrLen = sToArr.length;
+    var result = 0;
+    for(let j = 0; j < sToArrLen; j++) {
+        switch(sToArr[j]) {
+            case 'IV':
+                result += 4;
+                break;
+            case 'IX':
+                result += 9;
+                break;
+            case 'XL':
+                result += 40;
+                break;
+            case 'XC':
+                result += 90;
+                break;
+            case 'CD':
+                result += 400;
+                break;
+            case 'CM':
+                result += 900;
+                break;
+            case 'I':
+                result += 1;
+                break;
+            case 'V':
+                result += 5;
+                break;
+            case 'X':
+                result += 10;
+                break;
+            case 'L':
+                result += 50;
+                break;
+            case 'C':
+                result += 100;
+                break;
+            case 'D':
+                result += 500;
+                break;
+            case 'M':
+                result += 1000;
+                break;
+            default:
+                result += 0;
+                break;
+        }
+    }
+    return result;
+};
+
+var s = "IVIVCM";
+//console.log(romanToInt(s))
+
+
+/*法二*/
+var romanToInt2 = function(s) {
+    var result = 0;
+    var len = s.length;
+    for( let i = 0; i < len; i++) {
+        switch(s[i]) {
+            case 'I':
+                if (s[i + 1] === 'V') {
+                    result += 4;
+                    i++
+                } else if (s[i + 1] === 'X') {
+                    result += 9;
+                    i++
+                } else {
+                   result += 1; 
+                }
+                break;
+            case 'V':
+                result += 5;
+                break;
+            case 'X':
+                if (s[i + 1] === 'L') {
+                    result += 40;
+                    i++
+                } else if (s[i + 1] === 'C') {
+                    result += 90;
+                    i++
+                } else {
+                   result += 10; 
+                }
+                break;
+            case 'L':
+                result += 50;
+                break;
+            case 'C':
+                if (s[i + 1] === 'D') {
+                    result += 400;
+                    i++
+                } else if (s[i + 1] === 'M') {
+                    result += 900;
+                    i++
+                } else {
+                   result += 100; 
+                }
+                break;
+            case 'D':
+                result += 500;
+                break;
+            case 'M':
+                result += 1000;
+                break;
+            default:
+                result += 0;
+                break;
+        }
+    }
+    return result;
+}
+console.log(romanToInt2(s))
+
+/*法三*/
+var romanToInt3 = function(s) {
+
+    s = s.replace(/IV/g, 'Q'); //4
+    s = s.replace(/IX/g, 'W'); //9
+    s = s.replace(/XL/g, 'E'); //40
+    s = s.replace(/XC/g, 'R'); //90
+    s = s.replace(/CD/g, 'T'); //400
+    s = s.replace(/CM/g, 'Y'); //900
+    var map = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000,
+        "Q": 4,
+        "W": 9,
+        "E": 40,
+        "R": 90,
+        "T": 400,
+        "Y": 900,
+    };
+    var len = s.length;
+    var result = 0;
+    for(var i in s) {
+        result += map[s[i]]
+    }
+    return result
+}
+
+console.log(romanToInt3(s))
+
+/*法四：老公赐教的正则大法*/
+var romanToInt4 = function(s) {
+
+    const MAP = {
+        'I': 1,    'IV': 4,    'V': 5,   'IX': 9,
+        'X': 10,   'XL': 40,   'L': 50,  'XC': 90,
+        'C': 100,  'CD': 400,  'D': 500, 'CM': 900,
+        'M': 1000
+    }
+    const TOKENIZER = /\B(?=I|(?<!I)[VX]|(?<!X)[LC]|(?<!C)[DM])/;
+    const REDUCER = (sum, token) => sum + MAP[token];
+    
+    return s.split(TOKENIZER).reduce(REDUCER, 0)
+    
+}
+
+console.log(romanToInt4(s))
+</script>
+</body>
+</html>
+

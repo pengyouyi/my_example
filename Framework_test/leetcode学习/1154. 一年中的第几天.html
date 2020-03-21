@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} date
+ * @return {number}
+ */
+var dayOfYear = function(date) {
+	let [year, month, day] = date.split('-').map((item) => parseInt(item))
+    let months = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if (year != 1900 && year % 4 == 0) {
+    	months[2] += 1
+    }
+    let sum = 0
+    for (let i = 0; i < month; i++) {
+        sum += months[i]
+    }
+    return sum + day
+};
+var date = "2019-02-10"
+console.log(dayOfYear(date));
+</script>
+</body>
+</html>
+

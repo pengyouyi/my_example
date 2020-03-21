@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} x
+ * @param {number} y
+ * @param {number} bound
+ * @return {number[]}
+ */
+var powerfulIntegers = function(x, y, bound) {
+    let set = new Set()
+    for (let i = 0; Math.pow(x,i) <= bound && i < 20; i++) {
+        for (let j = 0; Math.pow(y,j) <= bound && j < 20; j++) {
+            let item = Math.pow(x,i) + Math.pow(y,j)
+            if (item <= bound) {
+                set.add(item)
+            }
+        }
+    }
+    return [...set]
+};
+var x = 2, y = 1, bound = 10;
+console.log(powerfulIntegers(x, y, bound));
+</script>
+</body>
+</html>
+

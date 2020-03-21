@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maximumProduct = function(nums) {
+    nums.sort((a, b) => a - b);
+    let len = nums.length;
+    let product1 = nums[len-1] * nums[0] * nums[1];
+    let product2 = nums[len-1] * nums[len-2] * nums[len-3];
+    return Math.max(product1,product2);
+};
+var nums = [-1,-2,-3,-4];
+console.log(maximumProduct(nums));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t) {
+    let str = '[a-z]*';
+    for (let i = 0; i < s.length; i++) {
+        str += s[i] + '[a-z]*'
+    }
+    let pat = new RegExp(str);
+    return pat.test(t)
+};
+var s = "axc";
+var t = "ahbgdc";
+console.log(isSubsequence(s, t));
+
+/**贪心-字符串指针**/
+var isSubsequence2 = function(s, t) {
+    if (s.length === 0) {
+        return true;
+    }
+    let sPos = 0;
+    let tPos = 0;
+    let sLen = s.length;
+    let tLen = t.length;
+    while (tPos < tLen) {
+        if (s[sPos] === t[tPos]) {
+            sPos++
+        }
+        if (sPos === sLen) {
+            return true
+        }
+        tPos++
+    }
+    return false;
+};
+console.log(isSubsequence2(s, t));
+</script>
+</body>
+</html>
+

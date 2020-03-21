@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} S
+ * @param {string} T
+ * @return {boolean}
+ */
+var backspaceCompare = function(S, T) {
+    let pat = /([\w]#)/;
+    let pat2 = /^#+/;
+    while(/#/.test(S)) {
+        S = S.replace(pat, '').replace(pat2, '')
+    }
+    while(/#/.test(T)) {
+        T = T.replace(pat, '').replace(pat2, '')
+    }
+    return S === T
+};
+var S = "a##c";
+var T = "#a#c";
+console.log(backspaceCompare(S, T));
+
+var backspaceCompare2 = function(S, T) {
+    let pat = /.?\#/;
+    while(/#/.test(S)) {
+        S = S.replace(pat, '')
+    }
+    while(/#/.test(T)) {
+        T = T.replace(pat, '')
+    }
+    return S === T
+};
+console.log(backspaceCompare2(S, T));
+</script>
+</body>
+</html>
+

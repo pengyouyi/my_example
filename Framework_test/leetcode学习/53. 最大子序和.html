@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function sum(arr) {
+    var s = 0;
+    var arrLen = arr.length;
+    for(var i = 0; i < arrLen; i++) {
+        s += arr[i]
+    }
+    return s;
+}
+
+var maxSubArray = function(nums) {
+
+    let result = nums[0];
+    let sum = 0;
+    
+    for (let item of nums) {
+        //if (sum > 0) {
+        if (sum + item > item) {
+            sum = sum + item
+        } else {
+            sum = item
+        }
+        result = Math.max(result, sum)
+    }
+    return result
+};
+
+var nums = [-2,1,-3,4,-1,2,1,-5,4];
+
+console.log(maxSubArray(nums))
+
+// console.log(sum(nums))
+// console.log(Math.max(...nums))
+</script>
+</body>
+</html>
+

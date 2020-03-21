@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function(nums) {
+    let len = nums.length;
+    for (let i = 0; i < len; i++) {
+        if (nums.indexOf(nums[i]) !== nums.lastIndexOf(nums[i])) {
+            return true
+        }
+    }
+    return false
+};
+var nums = [3,3];
+console.log(containsDuplicate(nums));
+
+var containsDuplicate2 = function(nums) {
+    let len = nums.length;
+    let obj = {};
+    for (let i = 0; i < len; i++) {
+        if (!obj[nums[i]]) {
+            obj[nums[i]] = true
+        } else {
+            return true
+        }
+    }
+    return false
+};
+console.log(containsDuplicate2(nums));
+
+var containsDuplicate3 = function(nums) {
+    return !(new Set(nums).size === nums.length)
+};
+console.log(containsDuplicate3(nums));
+
+var containsDuplicate4 = function(nums) {
+    nums.sort();
+    let len = nums.length;
+    for (let i = 0; i < len; i++) {
+        if (nums[i] == nums[i+1]) {
+            return true
+        }
+    }
+    return false
+};
+console.log(containsDuplicate4(nums));
+</script>
+</body>
+</html>
+

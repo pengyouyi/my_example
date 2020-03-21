@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} A
+ * @param {number[][]} queries
+ * @return {number[]}
+ */
+var sumEvenAfterQueries = function(A, queries) {
+    let qLen = queries.length;
+    let ALen = A.length;
+    let res = []
+    for (let i = 0; i < qLen; i++) {
+    	// let index = queries[i][1]
+    	// A[index] = A[index] + queries[i][0]
+    	A[queries[i][1]] = A[queries[i][1]] + queries[i][0]
+    	let sum = 0;
+    	for (let j = 0; j < ALen; j++) {
+    		// 偶数
+    		if (A[j] % 2 == 0) {
+    			sum += A[j]
+    		}
+    	}
+    	res.push(sum)
+    }
+    return res
+};
+var A = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]];
+//console.log(sumEvenAfterQueries(A, queries));
+
+var sumEvenAfterQueries3 = function(A, queries) {
+    let qLen = queries.length;
+    let ALen = A.length;
+    let res = [];
+    let evenSum = 0;
+    A.forEach((item) => {
+        if (item % 2 == 0) {
+        	evenSum += item
+        }
+    })
+    for (let i = 0; i < qLen; i++) {
+    	let index = queries[i][1]
+    	let val = queries[i][0]
+        let temp = A[index] + val;
+        if (A[index] % 2 == 0) {
+        	evenSum -= A[index]
+        	if (temp % 2 == 0) {
+        		evenSum += temp
+        	}
+        } else if (temp % 2 == 0) {
+        	evenSum += temp
+        }
+        A[index] = temp
+    	res.push(evenSum)
+    }
+    return res
+};
+
+var sumEvenAfterQueries2 = function(A, queries) {
+    let qLen = queries.length;
+    let ALen = A.length;
+    let res = [];
+    let evenSum = 0;
+    A.forEach((item) => {
+        if (item % 2 == 0) {
+        	evenSum += item
+        }
+    })
+    for (let i = 0; i < qLen; i++) {
+    	let index = queries[i][1]
+    	let val = queries[i][0]
+        if (A[index] % 2 == 0) {
+        	evenSum -= A[index]
+        } 
+        A[index] += val
+        if (A[index] % 2 == 0) {
+        	evenSum += A[index]
+        }
+    	res.push(evenSum)
+    }
+    return res
+};
+console.log(sumEvenAfterQueries2(A, queries));
+</script>
+</body>
+</html>
+

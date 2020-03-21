@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} m
+ * @param {number} n
+ * @param {number[][]} ops
+ * @return {number}
+ */
+var maxCount = function(m, n, ops) {
+    for (let i = 0; i < ops.length; i++) {
+        m = Math.min(m, ops[i][0])
+        n = Math.min(n, ops[i][1])
+    }
+    return m * n
+};
+var m = 3
+var n = 3
+var operations = [[2,2],[3,3]];
+console.log(maxCount(m, n, ops));
+</script>
+</body>
+</html>
+

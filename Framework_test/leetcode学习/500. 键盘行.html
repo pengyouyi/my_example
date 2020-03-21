@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function(words) {
+    var pattern = /^([qwertyuiop]+|[asdfghjkl]+|[zxcvbnm]+)$/i;
+    return words.filter((item) => {
+        return pattern.test(item)
+    })
+};
+var words = ["Hello", "Alaska", "Dad", "Peace"]
+console.log(findWords(words));
+</script>
+</body>
+</html>
+

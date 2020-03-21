@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} bits
+ * @return {boolean}
+ */
+var isOneBitCharacter = function(bits) {
+    let last1count = 0;
+    for (let i = bits.length - 2; i >= 0; i--) {
+        if(bits[i] === 1) {
+            last1count++;
+        } else {
+            break;
+        }
+    }
+    return last1count % 2 === 0 
+};
+var bits = [1,1,0,0]
+console.log(isOneBitCharacter(bits));
+
+var isOneBitCharacter2 = function(bits) {
+    let pat = /^(10|11|0)*0$/;
+    let str = bits.join('');
+    return pat.test(str)
+};
+console.log(isOneBitCharacter2(bits));
+</script>
+</body>
+</html>
+

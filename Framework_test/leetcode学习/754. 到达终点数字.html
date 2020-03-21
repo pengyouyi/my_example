@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} target
+ * @return {number}
+ */
+var reachNumber = function(target) {
+    let sum = 0;
+    let n = 0;
+    target = Math.abs(target);
+    while(sum < target || (target + sum) % 2 !== 0) {
+        n++;
+        sum += n;
+    }
+    return n
+};
+var target = 2;
+console.log(reachNumber(target));
+</script>
+</body>
+</html>
+

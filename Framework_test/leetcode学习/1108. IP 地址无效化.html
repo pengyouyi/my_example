@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} address
+ * @return {string}
+ */
+var defangIPaddr = function(address) {
+    return address.replace(/[.]/g, '[.]')
+};
+var address = "255.100.50.0"
+console.log(defangIPaddr(address));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) {
+        return false
+    };
+    return s.split('').sort().join('') === t.split('').sort().join('')
+};
+var s = "anag";
+var t = "naga";
+//console.log(isAnagram(s, t));
+
+var isAnagram2 = function(s, t) {
+    var sObj = {}
+    var tObj = {}
+    for (let i = 0; i < s.length; i++) {
+        if(!sObj[s[i]]) {
+            sObj[s[i]] = 1
+        } else {
+            sObj[s[i]]++
+        }
+        if(!tObj[t[i]]) {
+            tObj[t[i]] = 1
+        } else {
+            tObj[t[i]]++
+        }
+    }
+    for (let key in sObj) {
+        if (sObj[key] !== tObj[key]) {
+            return false
+        };
+    }
+    return true
+};
+console.log(isAnagram2(s, t));
+</script>
+</body>
+</html>
+

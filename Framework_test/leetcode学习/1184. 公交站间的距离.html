@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} distance
+ * @param {number} start
+ * @param {number} destination
+ * @return {number}
+ */
+var distanceBetweenBusStops = function(distance, start, destination) {
+    if (start > destination) {
+        [start, destination] = [destination, start]
+    }
+
+    // 环形总和
+    let total = 0;
+    distance.forEach((i) => total += i)
+
+    // 顺时针的和
+    let sum = 0
+    for (let i = start; i < destination; i++) {
+        sum += distance[i]
+    }
+    
+    return Math.min(sum, total-sum)
+};
+var distance = [1,2,3,4], start = 0, destination = 3
+console.log(distanceBetweenBusStops(distance, start, destination));
+
+
+</script>
+</body>
+</html>
+

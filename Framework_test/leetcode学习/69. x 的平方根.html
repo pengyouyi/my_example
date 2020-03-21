@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var mySqrt = function(x) {
+   return parseInt(Math.sqrt(x)) 
+};
+
+var x = 10;
+console.log(mySqrt(x))
+
+var mySqrt2 = function(x) {
+    var i = 0;
+    while(!(i*i<=x && (i+1)*(i+1)>x)){
+        i++;
+    }
+    return i
+};
+console.log(mySqrt2(x))
+</script>
+</body>
+</html>
+

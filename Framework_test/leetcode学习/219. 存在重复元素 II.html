@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var containsNearbyDuplicate = function(nums, k) {
+    var obj = {};
+    for (let i = 0; i < nums.length; i++) {
+        if(!obj[nums[i]]) {
+            obj[nums[i]] = [i];
+        } else {
+            obj[nums[i]].push(i)
+        }
+    }
+    for (let key in obj) {
+        if (obj[key].length > 1) {
+            for (let j = 0; j < obj[key].length-1; j++) {
+                if (Math.abs(obj[key][j+1] - obj[key][j]) <= k) {
+                    return true
+                }
+            }
+        }
+    }
+    return obj
+};
+var nums = [1,2,3,1];
+var k = 2;
+//console.log(containsNearbyDuplicate(nums, k));
+
+var containsNearbyDuplicate2 = function(nums, k) {
+    var obj = {};
+    for (let i = 0; i < nums.length; i++) {
+        if(!obj[nums[i]] && obj[nums[i]] !== 0) {
+            obj[nums[i]] = i;
+        } else {
+            if (Math.abs(i - obj[nums[i]]) <= k) {
+                return true
+            } else {
+                obj[nums[i]] = i;
+            }
+        }
+    }
+    return false
+};
+//console.log(containsNearbyDuplicate2(nums, k));
+
+
+var containsNearbyDuplicate3 = function(nums, k) {
+    let map = new Map();
+    for(let i = 0; i < nums.length; i++) {
+        if(map.has(nums[i])) {
+            if(Math.abs(map.get(nums[i]) - i) <= k) {
+                return true
+            } else {
+                map.set(nums[i], i)
+            }
+        } else {
+            map.set(nums[i], i)
+        }
+    }
+    return false;
+}
+console.log(containsNearbyDuplicate3(nums, k));
+</script>
+</body>
+</html>
+

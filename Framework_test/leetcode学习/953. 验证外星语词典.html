@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string[]} words
+ * @param {string} order
+ * @return {boolean}
+ */
+var isAlienSorted = function(words, order) {
+    let map = new Array(26);
+    for(let i = 0; i < order.length; i++){
+        map[order[i].charCodeAt()-97] = i;
+    }
+    for(let i = 1; i < words.length; i++){
+        if(map[words[i][0].charCodeAt()-97] <= map[words[i-1][0].charCodeAt()-97]) return false;
+    }
+    return true;
+};
+var words = ["hello","leetcode"];
+var order = "hlabcdefgijkmnopqrstuvwxyz";
+console.log(isAlienSorted(words, order));
+</script>
+</body>
+</html>
+

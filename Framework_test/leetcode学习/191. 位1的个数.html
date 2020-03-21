@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} n - a positive integer
+ * @return {number}
+ */
+var hammingWeight = function(n) {
+    let sum = 0;
+    while (n) {
+        n &= n - 1
+        sum++
+    }
+    return sum;
+};
+var n = 00000000000000000000000000001011;
+//console.log(hammingWeight(n))
+
+var hammingWeight2 = function(n) {
+	let sum = 0
+    while (n) {
+        sum += n & 1
+        n >>>= 1
+    }
+    return sum
+};
+//console.log(hammingWeight2(n))
+
+
+</script>
+</body>
+</html>
+

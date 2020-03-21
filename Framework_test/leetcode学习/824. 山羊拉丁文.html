@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} S
+ * @return {string}
+ */
+var toGoatLatin = function(S) {
+    let pat = /^[aeiou]/i;
+    let sArr = S.split(' ');
+    res = '';
+    for (let i = 0; i < sArr.length; i++) {
+        if (!pat.test(sArr[i])) {
+            sArr[i] = sArr[i].substr(1) + sArr[i][0] 
+        }
+        res += sArr[i] + 'ma' + 'a'.repeat(i+1) + ' '
+    }
+    return res.replace(/[\s]$/, '')
+};
+var S = "I speak Goat Latin";
+console.log(toGoatLatin(S));
+
+</script>
+</body>
+</html>
+

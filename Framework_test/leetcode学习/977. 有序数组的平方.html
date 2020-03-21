@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+var sortedSquares = function(A) {
+    let res = []
+    A.forEach((item) => {
+        res.push(item * item)
+    })
+    return res.sort((a, b) => a - b)
+};
+var A = [-4,-1,0,3,10];
+console.log(sortedSquares(A));
+
+</script>
+</body>
+</html>
+

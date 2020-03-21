@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {number}
+ */
+var hammingDistance = function(x, y) {
+    let k = x^y;
+    let str = k.toString(2);
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] == 1) {
+            count++
+        }
+    }
+    return count
+};
+var x = 1;
+var y = 4;
+console.log(hammingDistance(x, y));
+
+var hammingDistance2 = function(x, y) {
+    let max = x >= y ? x : y;
+    let max2 = max.toString(2);
+    let x2 = x.toString(2).padStart(max2.length, '0');
+    let y2 = y.toString(2).padStart(max2.length, '0');
+    let count = 0;
+    for (let i = 0; i < max2.length; i++) {
+        if (x2[i] !== y2[i]) {
+            count++
+        }
+    }
+    return count
+};
+console.log(hammingDistance2(x, y));
+</script>
+</body>
+</html>
+

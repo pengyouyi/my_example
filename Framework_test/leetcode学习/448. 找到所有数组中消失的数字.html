@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findDisappearedNumbers = function(nums) {
+    var n = nums.length;
+    var res = [];
+    for (let i = 1; i <= n; i++) {
+        if (nums.indexOf(i) === -1) {
+            res.push(i)
+        }
+    }
+    return res
+};
+var nums = [4,3,2,7,8,2,3,1];
+console.log(findDisappearedNumbers(nums));
+
+var findDisappearedNumbers2 = function(nums) {
+    var len = nums.length;
+    var arr = [];
+    for (let i = 0; i < len; i++) {
+        nums[Math.abs(nums[i])-1] = -Math.abs(nums[Math.abs(nums[i])-1]);
+    }
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > 0) {
+          arr.push(i + 1);
+        }
+    }
+    return arr
+};
+console.log(findDisappearedNumbers2(nums));
+</script>
+</body>
+</html>
+

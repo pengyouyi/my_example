@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} A
+ * @param {number[]} B
+ * @return {number[]}
+ */
+var fairCandySwap = function(A, B) {
+	let sumA = 0;
+	let sumB = 0;
+    for (let item of A) {
+        sumA += item
+    }
+    for (let item of B) {
+        sumB += item
+    }
+    let diff = (sumA - sumB) / 2;
+    for (let i = 0; i < A.length; i++) {
+    	for (let j = 0; j < B.length; j++) {
+    		if (A[i]-B[j] === diff) {
+    			return [A[i], B[j]]
+    		}
+    	}
+    }
+};
+var A = [1, 2];
+var B = [2,3];
+console.log(fairCandySwap(A, B));
+</script>
+</body>
+</html>
+

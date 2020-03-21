@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} moves
+ * @return {boolean}
+ */
+var judgeCircle = function(moves) {
+    let countR = 0;
+    let countU = 0;
+    let len = moves.length;
+    for (let i = 0; i < len; i++) {
+        if (moves[i] == 'R') {
+            countR++
+        } else if (moves[i] == 'L') {
+            countR--
+        } else if (moves[i] == 'U') {
+            countU++
+        } else {
+            countU--
+        }
+    }
+    return countR == 0 && countU == 0;
+};
+var moves = "DDRUULRL";
+console.log(judgeCircle(moves));
+
+var judgeCircle2 = function(moves) {
+    // 判断左右移动的次数和上下移动的次数是否相等（即 L.count === R.count && U.count === D.count）
+    return moves.split('L').length === moves.split('R').length && moves.split('U').length === moves.split('D').length
+};
+console.log(judgeCircle2(moves));
+</script>
+</body>
+</html>
+

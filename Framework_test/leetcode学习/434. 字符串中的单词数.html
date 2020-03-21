@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var countSegments = function(s) {
+    s = s.trim();
+    if (s === '') return 0
+    return s.split(/\s+/).length
+};
+var s = " ";
+console.log(countSegments(s));
+
+var countSegments2 = function(s) {
+    let count = 0;
+    s += ' ';
+    for (let p = 1; p < s.length; p++){
+        if (s[p - 1] !== s[p] && s[p] === ' ') count++;
+    }
+    return count;
+};
+</script>
+</body>
+</html>
+

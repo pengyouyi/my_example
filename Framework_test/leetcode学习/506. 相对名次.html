@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @return {string[]}
+ */
+var findRelativeRanks = function(nums) {
+    let nums2 = [...nums];
+    nums2.sort((a, b) => b - a);
+    let arr = [];
+    for (let i = 0; i < nums.length; i++) {
+        if (nums2.indexOf(nums[i]) === 0) {
+            arr.push('Gold Medal')
+        } else if (nums2.indexOf(nums[i]) === 1) {
+            arr.push('Silver Medal')
+        } else if (nums2.indexOf(nums[i]) === 2) {
+            arr.push('Bronze Medal')
+        } else {
+            arr.push(nums2.indexOf(nums[i]) + 1 + '')
+        }
+    }
+    return arr
+};
+var nums = [9, 4, 7, 3, 1, 6];
+console.log(nums);
+console.log(findRelativeRanks(nums));
+
+var findRelativeRanks2 = function(nums) {
+    let nums2 = [...nums];
+    nums2.sort((a, b) => b - a);
+    let arr = [];
+    let gold = nums.indexOf(nums2[0]);
+    let silver = nums.indexOf(nums2[1]);
+    let bronze = nums.indexOf(nums2[2]);
+    for (let i = 0; i < nums.length; i++) {
+        arr.push(nums2.indexOf(nums[i]) + 1 + '')
+    }
+    arr[gold] = 'Gold Medal';
+    arr[silver] = 'Silver Medal';
+    arr[bronze] = 'Bronze Medal';
+    return arr
+};
+console.log(findRelativeRanks2(nums));
+</script>
+</body>
+</html>
+

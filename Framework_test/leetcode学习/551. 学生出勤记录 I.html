@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var checkRecord = function(s) {
+    if (s.indexOf('A') === s.lastIndexOf('A')) {
+        for (let i = 0; i < s.length-2; i++) {
+            if (s[i] === 'L' && s[i+1] === 'L' && s[i+2] === 'L') {
+                return false;
+            }
+        }
+    } else {
+        return false;
+    }
+    return true;
+};
+var s = "APPLL";
+console.log(checkRecord(s));
+
+var checkRecord2 = function(s) {
+    if (s.indexOf('A') === s.lastIndexOf('A') && s.indexOf('LLL') === -1) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+var checkRecord3 = function(s) {
+    let pat1 = /.*A+.*A+.*/;
+    let pat2 = /L{3,}/;
+    return !pat1.test(s) && !pat2.test(s);
+};
+console.log(checkRecord3(s));
+</script>
+</body>
+</html>
+

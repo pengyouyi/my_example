@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} S
+ * @return {string}
+ */
+var removeDuplicates = function(S) {
+    let pat = /([a-z])\1/
+    while(pat.test(S)) {
+        S = S.replace(pat.exec(S)[0], '')
+    }
+    return S
+};
+var S = "abbaca"
+console.log(removeDuplicates(S));
+
+
+var removeDuplicates = function(S) {
+    let arr = []
+    for (let i = 0; i < S.length; i++) {
+        let index = arr.length > 0 ? arr.length - 1 : 0;
+        if (S[i] == arr[index]) {
+            arr.pop()
+        } else {
+            arr.push(S[i])
+        }
+    }
+    return arr.join('')
+};
+</script>
+</body>
+</html>
+

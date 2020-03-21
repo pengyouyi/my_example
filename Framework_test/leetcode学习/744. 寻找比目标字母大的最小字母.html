@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {character[]} letters
+ * @param {character} target
+ * @return {character}
+ */
+var nextGreatestLetter = function(letters, target) {
+    for(let i = 0; i < letters.length; i++){
+        if(letters[i] > target){
+            return letters[i]
+        }
+    }
+    return letters[0]
+};
+var letters = ['a', 'c', 'e', 'f', 'g', 'i'];
+var target = 'f';
+console.log(nextGreatestLetter(letters, target));
+
+
+
+var nextGreatestLetter2 = function(letters, target) {
+    let left = 0;
+    let right = letters.length - 1;
+    while(left <= right) {
+        let middle = parseInt((left + right) / 2);
+        if (target < letters[middle]) {
+            right = middle - 1;
+        } else {
+            left = middle + 1;
+        }
+    }
+    return letters[left % letters.length];
+};
+console.log(nextGreatestLetter2(letters, target));
+
+
+</script>
+</body>
+</html>
+

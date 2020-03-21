@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} S
+ * @return {number[][]}
+ */
+var largeGroupPositions = function(S) {
+    let left = 0;
+    let right = 1;
+    let arr = [];
+    let len = S.length;
+    while(right < len) {
+        if (S[left] === S[right]) {
+            right++;
+        } else {
+            if (right - left >= 3) {
+                arr.push([left, right-1])
+            }
+            left = right;
+        }
+    }
+    if (right - left >= 3) {
+        arr.push([left, right-1])
+    }
+    return arr
+};
+var S = "abcdddeeeeaabbbcd";
+console.log(largeGroupPositions(S));
+
+
+var largeGroupPositions2 = function(S) {
+    const pat = /(\w)\1{2,}/g
+    let arr = [];
+    let item;
+    while((item = pat.exec(S)) !== null) {
+        arr.push([item.index, item.index + item[0].length - 1])
+    }
+    return arr
+};
+console.log(largeGroupPositions2(S));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isIsomorphic = function(s, t) {
+    if (s === t) {
+        return true
+    }
+    for (let i = 0; i < s.length; i++) {
+        if (s.indexOf(s[i]) !== t.indexOf(t[i])) {
+            return false
+        }
+    }
+    return true
+};
+var s = "ab";
+var t = "aa";
+console.log(isIsomorphic(s, t));
+
+var isIsomorphic2 = function(s, t) {
+    var arr1 = [];
+    var arr2 = [];
+    if (s === t) {
+        return true
+    }
+    for (let i = 0; i < s.length; i++) {
+        if (arr1.indexOf(s[i]) === -1 && arr2.indexOf(t[i]) === -1) {
+            arr1.push(s[i]);
+            arr2.push(t[i]);
+        } else {
+            if (arr1.indexOf(s[i]) !== arr2.indexOf(t[i])) {
+                return false
+            }
+        }
+    }
+    return true
+};
+
+console.log(isIsomorphic2(s, t));
+</script>
+</body>
+</html>
+

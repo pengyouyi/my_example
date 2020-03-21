@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+var isPowerOfFour = function(num) {
+    if (num < 0) {
+       return false
+    }
+    return /^1(00)*$/.test(num.toString(2))
+};
+var num = 16;
+console.log(isPowerOfFour(num));
+
+
+var isPowerOfFour2 = function(num) {
+    if (num < 0 || num & (num - 1))//排除不是2的幂次的数
+    {
+        return false;
+    }
+    return num % 3 == 1;
+};
+console.log(isPowerOfFour2(num));
+</script>
+</body>
+</html>
+

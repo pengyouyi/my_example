@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} area
+ * @return {number[]}
+ */
+var constructRectangle = function(area) {
+    let middle = parseInt(Math.sqrt(area));
+    let arr = [];
+    while(area % middle !== 0) {
+        middle++
+    }
+    arr.push(middle);
+    arr.push(area/middle);
+    return arr.sort((a, b) => b - a);
+};
+var area = 30;
+console.log(constructRectangle(area));
+</script>
+</body>
+</html>
+

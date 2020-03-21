@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersect = function(nums1, nums2) {
+    var result = [];
+    for (let i = 0; i < nums1.length; i++) {
+        var index = nums2.indexOf(nums1[i]);
+        if (index !== -1) {
+            result.push(nums1[i]);
+            nums2.splice(index, 1)
+        }
+    }
+    return result;
+};
+var intersect2 = function(nums1, nums2) {
+    var result = [];
+    var map = new Map();
+    for (let i = 0; i < nums1.length; i++) {
+        var index = nums2.indexOf(nums1[i]);
+        if (index !== -1) {
+            if (!map.has(nums1[i])) {
+                map.set(nums1[i], 1);
+            } else {
+                var value = map.get(nums1[i]);
+                map.set(nums1[i], ++value);  
+            } 
+            nums2.splice(index, 1)
+        }
+    }
+    map.forEach( (item, index) => {
+        for (let i = 0; i < item; i++) {
+            result.push(index)
+        }
+    })
+    return result;
+};
+var nums1 = [1, 2, 2, 1];
+var nums2 = [2, 2];
+console.log(intersect(nums1, nums2));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} N
+ * @return {number}
+ */
+var binaryGap = function(N) {
+    let nTo2 = N.toString(2);
+    let left = nTo2.indexOf('1');
+    let right = nTo2.indexOf('1', left+1);
+    let max = 0;
+    for (let i = left+1; i < nTo2.length; i++) {
+        if (nTo2[i] == 1) {
+            max = Math.max(max, right-left)
+            left = i;
+            right = nTo2.indexOf('1', left+1);
+        }
+    }
+    return max
+};
+var N = 22;
+console.log(binaryGap(N));
+
+var binaryGap2 = function(N) {
+    let bi = N.toString(2);
+    let max = 0;
+    let arr = bi.match(/(?<=1)0*(?=1)/g);
+
+    if (arr == null) return 0;   
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i].length+1 > max)
+            max = arr[i].length + 1;     
+    }
+    return arr;
+    return max;
+};
+
+console.log(binaryGap2(N));
+</script>
+</body>
+</html>
+

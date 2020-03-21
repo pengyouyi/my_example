@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {character[]} chars
+ * @return {number}
+ */
+var compress = function(chars) {
+    if(!chars.length) return 0;
+    if(chars.length === 1) return 1;
+    let ans = '';
+    let l = 0;
+    let r = 0;
+    while(r < chars.length){
+        if(chars[l] === chars[r]){
+            if(r === chars.length - 1){
+                let s = (r - l + 1) > 1 ? (r - l + 1) : '';
+                ans += chars[l] + s;
+                break;
+            }else{
+                r++;
+                continue;
+            }
+        }
+        // 下面都是不相同的
+        if (r - l >= 2){ // 超过两个
+            ans += chars[l] + (r - l);
+            l = r;
+        }else{ // 只有一个
+            ans += chars[l];
+            l = r;
+        }
+    }
+    let arr = ans.split('')
+    for(let i = 0; i < arr.length; i++){
+        chars[i] = arr[i]
+    }
+    return arr.length
+};
+var chars = ["a","a","b","b","c","c","c"];
+console.log(compress(chars));
+
+</script>
+</body>
+</html>
+

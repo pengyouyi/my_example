@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+var isPerfectSquare = function(num) {
+    var i = 1;
+    while(i * i <= num) {
+        if (i * i < num) {
+            i++;
+        } else if (i * i === num) {
+            return true
+        }
+    }
+    return false
+};
+var num = 16;
+console.log(isPerfectSquare(num));
+
+var isPerfectSquare2 = function(num) {
+    let left = 1;
+    let right = num;
+    while (left <= right) {
+        let mid = parseInt((left+right)/2);
+        let product = mid * mid;
+        if (product === num) {
+            return true;
+        } else if (product > num) {
+            right = mid - 1;
+        } else {
+            left = mid + 1
+        }
+    }
+    return false;
+};
+console.log(isPerfectSquare2(num));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var fizzBuzz = function(n) {
+    var arr = [];
+    for (let i = 1; i <= n; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            arr.push('FizzBuzz')
+        } else if (i % 3 === 0) {
+            arr.push('Fizz')
+        } else if (i % 5 === 0) {
+            arr.push('Buzz')
+        } else {
+            arr.push(i.toString())
+        }
+    }
+    return arr;
+};
+var n = 15;
+console.log(fizzBuzz(n));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseWords = function(s) {
+    let arr = s.split(' ');
+    let arr2 = [];
+    for(let i = 0; i < arr.length; i++) {
+        arr2.push(arr[i].split('').reverse().join(''))
+    }
+    return arr2.join(' ');
+};
+var s = "Let's take LeetCode contest";
+console.log(reverseWords(s));
+</script>
+</body>
+</html>
+

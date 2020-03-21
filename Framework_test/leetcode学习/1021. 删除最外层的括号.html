@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} S
+ * @return {string}
+ */
+var removeOuterParentheses = function(S) {
+    let arr = [];
+    let k = 0;
+    let primitives = []
+    for (let i = 0; i < S.length; i++) {
+        if (S[i] == '(') {
+            arr.push('(')
+        } else {
+            arr.pop()
+        }
+        if (arr.length == 0) {
+            primitives.push(S.substring(k,i + 1))
+            k = i + 1
+        }
+    }
+    return primitives.map((item) => item.slice(1,item.length - 1)).join('')
+};
+var S = "(()())(())(()(()))"
+console.log(removeOuterParentheses(S));
+
+</script>
+</body>
+</html>
+

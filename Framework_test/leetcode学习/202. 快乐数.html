@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isHappy = function(n) {
+    var result = [];
+    while(sum !== 1){
+        var arr = n.toString().split('');
+        var sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += Math.pow(parseInt(arr[i]),2)
+        }
+        if (result.indexOf(sum) > -1) {
+            return false
+        }
+        n = sum;
+        result.push(sum); 
+    }
+    return true
+};
+var n = 20;
+console.log(isHappy(n));
+</script>
+</body>
+</html>
+

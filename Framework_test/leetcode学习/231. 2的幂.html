@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfTwo = function(n) {
+    while(n >= 2) {
+        n /= 2
+    }
+    if (n === 1) {
+        return true
+    } else {
+        return false
+    }
+};
+var n = 0
+console.log(isPowerOfTwo(n));
+
+var isPowerOfTwo2 = function(n) {
+    return Number.isInteger(Math.log2(n));
+};
+console.log(isPowerOfTwo2(n));
+</script>
+</body>
+</html>
+

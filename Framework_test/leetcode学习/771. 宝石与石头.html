@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    let count = 0;
+    for(let i = 0; i < S.length; i++) {
+        let index = i;
+        for(let j = 0; j < J.length; j++) {
+          if (S[i] === J[j]) {
+              count++;
+              i--;
+              S = S.slice(0, index) + S.slice(index+1, S.length)
+          }
+        }
+    }
+    return count
+};
+var J = "aA";
+var S = "aAAbbbb";
+console.log(numJewelsInStones(J, S));
+
+var numJewelsInStones2 = function(J, S) {
+    let len = S.length;
+    for(let i = 0; i < J.length; i++) {
+        let pat = new RegExp(J[i], 'g');
+        S = S.replace(pat, '')
+    }
+    return len - S.length;
+};
+console.log(numJewelsInStones2(J, S));
+
+var numJewelsInStones3 = function(J, S) {
+    let len = S.length;
+    let SS = '[' + J + ']';
+    let pat = new RegExp(SS, 'g');
+    S = S.replace(pat, '')
+    return len - S.length;
+};
+console.log(numJewelsInStones3(J, S));
+
+var numJewelsInStones4 = function(J, S) {
+    let jArr = J.split('');
+    let sArr = S.split('');
+    let JS = sArr.filter((item) => {
+        return jArr.includes(item)
+    })
+    return JS.length
+};
+console.log(numJewelsInStones4(J, S));
+
+var numJewelsInStones5 = function(J, S) {
+    let set = new Set(J.split(''));
+    let count = 0;
+    for (let item of S) {
+      if(set.has(item)) {
+        count++
+      }
+    }
+    return count
+};
+console.log(numJewelsInStones5(J, S));
+</script>
+</body>
+</html>
+

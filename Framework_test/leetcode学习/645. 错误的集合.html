@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ /** 使用indexOf 比减法慢太多了 **/
+var findErrorNums = function(nums) {
+    let len = nums.length;
+    let repeat;
+    let lack;
+    for (let i = 1; i <= len; i++) {
+        if (nums.indexOf(i) === -1) {
+            lack = i
+        }
+        if (nums.indexOf(i) !== nums.lastIndexOf(i)) {
+            repeat = i
+        }
+    }
+    return [repeat, lack];
+};
+var nums = [3,2,3,4,6,5];
+console.log('nums',nums.sort());
+//console.log(findErrorNums(nums));
+
+var findErrorNums2 = function(nums) {
+    let len = nums.length;
+    let repeat;
+    let lack;
+    let unique = [...new Set(nums)];
+    let map = new Map();
+    let arr = []
+    for (let i = 0; i < len; i++) {
+        if (!map.has(nums[i])) {
+            map.set(nums[i], true)
+        } else {
+            repeat = nums[i]
+        }
+        arr.push(i+1)
+    }
+    lack = arr.filter((item) => {
+        return unique.indexOf(item) == -1
+    })
+    return [repeat, lack[0]];
+};
+console.log(findErrorNums2(nums));
+
+var findErrorNums3 = function(nums) {
+    let len = nums.length;
+    let repeat;
+    let lack;
+    let unique = [...new Set(nums)];
+    let map = new Map();
+    let arr = []
+    let sum = (1 + len ) * len / 2;
+    for (let i = 0; i < len; i++) {
+        if (!map.has(nums[i])) {
+            map.set(nums[i], true)
+        } else {
+            repeat = nums[i]
+        }
+        arr.push(i+1)
+    }
+    for (let j = 0; j < unique.length; j++) {
+        sum -= unique[j]
+    }
+    return [repeat, sum];
+};
+console.log(findErrorNums3(nums));
+
+var findErrorNums4 = function(nums) {
+    let len = nums.length;
+    let repeat;
+    let lost;
+    let map = new Map();
+    let wrongSum = 0;
+    let rightSum = (1 + len ) * len / 2;
+    for (let i = 0; i < len; i++) {
+        if (!map.has(nums[i])) {
+            map.set(nums[i], true)
+        } else {
+            repeat = nums[i]
+        }
+        wrongSum += nums[i]
+    }
+    lost = rightSum - (wrongSum-repeat);
+    return [repeat, lost];
+};
+console.log(findErrorNums4(nums));
+
+var findErrorNums5 = function(nums) {
+    //有一个元素重复  nums是无序的
+    //新建一个数组
+    var arr = new Array(nums.length).fill(0);
+    let res1 = 0,res2 = 0;
+    for(let i  of nums){
+        arr[i-1]++;
+        if (arr[i-1] == 2) {
+            res1 = i
+        };
+    }
+    for(let i = 0; i < arr.length; ++i){
+        if (arr[i] == 0) {
+            return [res1, i+1];
+        } 
+    }
+    return [];
+};
+console.log(findErrorNums5(nums));
+
+var findErrorNums6 = function(nums) {
+    var res = [];
+    for (let i = 0; i < nums.length; i++) {
+        var absN = Math.abs(nums[i]) - 1
+        if (nums[absN] < 0) {
+            res.push(Math.abs(nums[i]))
+        } else {
+            nums[absN] = - nums[absN]
+        }
+    }
+    var s
+    nums.forEach((i,idx) => s = i > 0 ? (idx + 1) : s)
+    return res.concat(s)
+};
+console.log(findErrorNums6(nums));
+</script>
+</body>
+</html>
+

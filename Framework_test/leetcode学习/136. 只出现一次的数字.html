@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    nums.sort( (a, b) => a - b);
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] !== nums[i-1] && nums[i] !== nums[i+1]) {
+            return nums[i]
+        }
+    }
+};
+var nums = [17,12,5,-6,12,4,17,-5,2,-3,2,4,5,16,-3,-4,15,15,-4,-5,-6];
+//var nums = [4,1,2,1,2];
+//var nums = [2,2,1];
+//console.log(singleNumber(nums))
+
+var singleNumber2 = function(nums) {
+    var result = 0;
+    var len = nums.length
+    for(let i = 0; i < len; i++) {
+        result = result ^ nums[i];
+    }
+    return result
+};
+console.log(singleNumber2(nums))
+</script>
+</body>
+</html>
+

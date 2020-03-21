@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} num
+ * @return {string}
+ */
+var convertToBase7 = function(num) {
+    if (num == 0) return '0';
+    let str = '';
+    let radix = 7;
+    let isPositiveNum = true;
+    if(num < 0){
+        num = -num;
+        isPositiveNum = false;
+    }
+    while (num > 0) {
+    	str = num % radix + str;
+    	num = parseInt(num / 7);
+    }
+    return isPositiveNum ? str : '-' + str; 
+};
+var num = 99;
+console.log(convertToBase7(num));
+
+var convertToBase7 = function(num) {
+    return (num).toString(7);
+};
+</script>
+</body>
+</html>
+

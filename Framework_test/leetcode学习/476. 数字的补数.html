@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var findComplement = function(num) {
+    let num2 = num.toString(2);
+    let res = '';
+    for(let i = 0; i < num2.length; i++) {
+        if (num2[i] == 0) {
+            res += '1'
+        } else {
+            res += '0'
+        }
+    }
+    return parseInt(res, 2)
+};
+var num = 1;
+console.log(findComplement(num));
+
+
+</script>
+</body>
+</html>
+

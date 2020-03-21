@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} text
+ * @param {string} first
+ * @param {string} second
+ * @return {string[]}
+ */
+var findOcurrences = function(text, first, second) {
+    let arr = text.split(/\s+/);
+    let res = []
+    for (let i = 0; i < arr.length-2; i++) {
+        if (arr[i] == first && arr[i+1]) {
+            res.push(arr[i+2])
+        }
+    }
+    return res
+};
+
+var text = "alice is a good girl she is a good student", first = "a", second = "good";
+console.log(findOcurrences(text, first, second));
+
+var findOcurrences2 = function(text, first, second) {
+    let res = []
+    let pat = new RegExp(`(?<=\\b${first}\\s+${second}\\s+)\\w+`, 'gm')
+    let item;
+    while((item = pat.exec(text)) !== null) {
+        res.push(item[0])
+    }
+    return res
+};
+
+console.log(findOcurrences2(text, first, second));
+</script>
+</body>
+</html>
+

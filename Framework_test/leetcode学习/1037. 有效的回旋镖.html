@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[][]} points
+ * @return {boolean}
+ */
+var isBoomerang = function(points) {
+    const dx = points[1][0] - points[0][0];
+    const dy = points[1][1] - points[0][1];
+    const ex = points[2][0] - points[0][0];
+    const ey = points[2][1] - points[0][1];
+    return dx * ey != dy * ex;
+};
+var points = [[1,1],[2,2],[3,3]]
+console.log(isBoomerang(points));
+
+</script>
+</body>
+</html>
+

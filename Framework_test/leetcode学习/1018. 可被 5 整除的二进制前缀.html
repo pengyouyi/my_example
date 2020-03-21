@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} A
+ * @return {boolean[]}
+ */
+var prefixesDivBy5 = function(A) {
+    let res = []
+    // 十进制
+    let decimal = 0;
+    for (let i = 0; i < A.length; i++) {
+        // 将二进制都转换成十进制数
+        decimal = decimal * 2 + A[i];
+        // 取模
+        decimal = decimal % 5;
+        if (decimal == 0) {
+            res.push(true)
+        } else {
+            res.push(false)
+        }
+    }
+    return res
+};
+var A = [1,1,1,0,1]
+console.log(prefixesDivBy5(A));
+
+/* 当A.length 太大时，溢出情况， 故此方法舍去*/
+var prefixesDivBy5 = function(A) {
+    let res = []
+    while (A.length > 0) {
+        let str = parseInt(A.join(''), 2)
+        if (str % 5 == 0) {
+            res.push(true)
+        } else {
+            res.push(false)
+        }
+        A.pop()
+    }
+    return res.reverse()
+};
+</script>
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} N
+ * @return {number}
+ */
+var bitwiseComplement = function(N) {
+    let NTo2 = N.toString(2)
+    let len = NTo2.length;
+    let res2 = ''
+    for (let i = 0; i < len; i++) {
+        if (NTo2[i] == 1) {
+            res2 += 0
+        } else {
+            res2 += 1
+        }
+    }
+    return parseInt(res2,2)
+};
+var N = 7
+console.log(bitwiseComplement(N));
+
+</script>
+</body>
+</html>
+

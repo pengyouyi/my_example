@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var repeatedNTimes = function(A) {
+    let set = new Set();
+    for (let item of A) {
+        if(!set.has(item)) {
+            set.add(item)
+        } else {
+            return item
+        }
+    }
+};
+var A = [5,1,5,2,5,3,5,4];
+console.log(repeatedNTimes(A));
+</script>
+</body>
+</html>
+

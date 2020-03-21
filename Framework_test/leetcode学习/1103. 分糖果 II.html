@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} candies
+ * @param {number} num_people
+ * @return {number[]}
+ */
+var distributeCandies = function(candies, num_people) {
+    let i = 0;
+    let index = 0;
+    let res = new Array(num_people).fill(0)
+    let left = candies
+    while(left > 0) {
+        i++
+        if (index >= num_people) index = 0
+            if (left < i) {
+                res[index] += left
+            } else {
+                res[index] += i
+            }
+        left -= i
+        index++
+    }
+    return res
+};
+var candies = 10, num_people = 3
+console.log(distributeCandies(candies, num_people));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string[]} cpdomains
+ * @return {string[]}
+ */
+var subdomainVisits = function(cpdomains) {
+    let map = new Map();
+    for (let i = 0; i < cpdomains.length; i++) {
+        let [num, url] = cpdomains[i].split(/\s+/);
+        var items = [url];
+        for (let j = 0; j < url.length; j++) {
+            if (url[j] === '.') {
+                items.push(url.substr(j+1))
+            }
+        }
+        items.forEach((item) => {
+            if (!map.has(item)) {
+                map.set(item, +num)
+            } else {
+                map.set(item, map.get(item) + +num)
+            }
+        })
+    }
+    let res = [];
+    for (let [key, val] of map) {
+        res.push(`${val} ${key}`)
+    }
+    return res
+};
+var cpdomains = ["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"];
+console.log(subdomainVisits(cpdomains));
+
+var subdomainVisits = function(cpdomains) {
+    let map = new Map()
+    let res = []
+    for(let i = 0; i < cpdomains.length; i++) {
+        let [num, url] = cpdomains[i].split(' ')
+        
+        while(url.includes('.')){
+            if(map.has(url)){
+                map.set(url, (Number(map.get(url)) + Number(num)))
+            } else {
+                map.set(url, num)
+            }            
+            url = url.slice(url.indexOf('.') + 1)
+        }
+        
+        if(map.has(url)){
+            map.set(url, (Number(map.get(url)) + Number(num)))
+        } else {
+            map.set(url, num)
+        }
+    }
+    map.forEach((value, key) => {
+        res.push(`${value} ${key}`)
+    })
+    return res
+};
+
+
+</script>
+</body>
+</html>
+

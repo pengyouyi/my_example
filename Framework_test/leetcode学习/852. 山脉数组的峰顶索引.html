@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var peakIndexInMountainArray = function(A) {
+    let maxVal = Math.max(...A);
+    let maxIndex = A.indexOf(maxVal);
+    return maxIndex
+};
+var A = [0,2,1,0];
+console.log(peakIndexInMountainArray(A));
+
+</script>
+</body>
+</html>
+

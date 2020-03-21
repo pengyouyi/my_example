@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var hasAlternatingBits = function(n) {
+    let nto2 = n.toString(2);
+    let pat = /^1(01)*0?$/;
+    return pat.test(nto2);
+};
+var n = 10;
+console.log(hasAlternatingBits(n));
+</script>
+</body>
+</html>
+

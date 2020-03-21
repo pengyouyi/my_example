@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} A
+ * @param {string} B
+ * @return {boolean}
+ */
+var rotateString = function(A, B) {
+    if (A === '' && B === '') {
+        return true
+    }
+    let len = A.length - 1;
+    while(len > 0) {
+        let A1 = A.slice(0,1)
+        let A2 = A.slice(1,A.length)
+        A = A2+ A1;
+        if (A === B) {
+            return true;
+        }
+        len--
+    }
+    return false
+};
+
+var rotateString = function(A, B) {
+    if (A === B) {
+        return true
+    }
+    if (A.length !== B.length) {
+        return false
+    }
+    let len = A.length - 1;
+    while(len > 0) {
+        A = A.substr(1) + A[0];
+        if (A === B) {
+            return true;
+        }
+        len--
+    }
+    return false
+};
+
+var A = 'abcde';
+var B = 'abced';
+console.log(rotateString(A, B));
+
+var rotateString2 = function(A, B) {
+    if (A.length === B.length && (A + A).includes(B)) {
+        return true
+    }
+    return false
+};
+console.log(rotateString2(A, B));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+</head>
+<body>
+    
+<script>  
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLastWord = function(s) {
+    let trimS = s.trim();
+    let sToArr = trimS.split(/\s+/);
+    let len = sToArr.length;
+    return sToArr[len - 1].length;
+};
+var s = "Hello  World ";
+console.log(lengthOfLastWord(s))
+
+
+/**/
+var lengthOfLastWord2 = function(s) {
+    let trimS = s.trim();
+    let index = trimS.lastIndexOf(' ');
+    return trimS.substr(index)
+};
+
+console.log(lengthOfLastWord2(s))
+
+</script>
+</body>
+</html>
+
